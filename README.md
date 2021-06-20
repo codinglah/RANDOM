@@ -4,7 +4,7 @@
 
 Currently, the `RanInt()` function has been completed. You are welcome to test it out, although there may be certain issues with it. Here are some details about the function:
 
-### `RanInt(minimum, maximum, quantity = 1, iterations = None, atype = None)` 
+#### `RanInt(minimum, maximum, quantity = 1, iterations = None, atype = None)` 
 
 #### Use
 
@@ -29,6 +29,8 @@ How many random integers, whose average is taken afterwards, you want to generat
 ##### `atype`
 
 Choose what type of average you want to take from the previously mentioned integers generated in `iterations`. Available options are `mean`, `median`, `mode` and `rand`. `rand` randomly picks one of the averages. 
+
+**--**
 
 Welcome to RANDOM! This package intends to provide a easy way to generate numbers, letters and more! Do note the following:
 
