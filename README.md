@@ -4,7 +4,7 @@
 
 Currently, the `RanInt()` function has been completed. You are welcome to test it out, although there may be certain issues with it. Here are some details about the function:
 
-#### `RanInt(minimum, maximum, quantity = 1, iterations = None, atype = None)` 
+### `RanInt(minimum, maximum, quantity = 1, iterations = None, atype = None)` 
 
 #### Use
 
