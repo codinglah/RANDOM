@@ -20,7 +20,11 @@ The maximum number of the range.
 
 ##### `quantity`
 
-How many random integers you want to generate. Default is 1.
+How many random integers you want to generate. Default is `1`.
+
+#### NOTE:
+
+If you enter a decimal for any of the above arguments, it will **automatically be rounded ***down*** **to the nearest integer**. For example, `3.9` gives `3`.
 
 ##### `iterations`
 
