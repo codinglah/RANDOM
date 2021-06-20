@@ -55,10 +55,8 @@ def RanInt(minimum, maximum, quantity = 1, iterations = None, atype = None):
                             if numlist[j] > numlist[j + 1] :
                                 numlist[j], numlist[j + 1] = numlist[j + 1], numlist[j]
                     if len(numlist) % 2 == 0:
-                        # Zero indexing (+1-1) for 2nd one in next line so omitted
                         ranints.append((numlist[len(numlist) // 2 - 1] + numlist[len(numlist) // 2]) // 2)
                     else:
-                        # Zero indexing so the following should be math.ceil(...-1) but that's same as math.floor(...)
                         ranints.append(numlist[math.floor(len(numlist) / 2)])
             elif atype == "mode" or a == 3:
                     ranints.append(max(set(numlist), key = numlist.count))
