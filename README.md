@@ -1,5 +1,7 @@
 # RANDOM
 
+[![CodeFactor](https://www.codefactor.io/repository/github/codinglah/random/badge/main)](https://www.codefactor.io/repository/github/codinglah/random/overview/main)
+
 ## Update 20/6/21:
 
 Currently, the `RanInt()` function has been completed. You are welcome to test it out, although there may be certain issues with it. Here are some details about the function:
