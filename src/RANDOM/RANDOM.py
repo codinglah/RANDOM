@@ -1,4 +1,5 @@
-import random, math
+import random
+import math
 def RanInt(minimum, maximum, quantity = 1, iterations = None, atype = None):
     real_iterations = iterations
     try:
