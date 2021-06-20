@@ -11,21 +11,21 @@ def RanInt(minimum, maximum, quantity = 1, iterations = None, atype = None):
         raise ValueError("non integer arg for 'quantity'")
     if quantity < 1:
         raise ValueError("argument 'quantity' cannot be less than 1")
-    if minimum == None and not maximum == None:
+    if minimum is None and not maximum is None:
         raise TypeError("RanInt() missing 1 required positional argument: 'minimum'")
-    if not minimum == None and maximum == None:
+    if not minimum is None and maximum is None:
         raise TypeError("RanInt() missing 1 required positional argument: 'maximum'")
-    if not minimum == None and not maximum == None:
-        if iterations == None and atype == None:
+    if not minimum is None and not maximum is None:
+        if iterations is None and atype is None:
             ranints = []
             while quantity > 0:
                 ranints.append(random.randint(int(minimum), int(maximum)))
                 quantity -= 1
             return ranints
         else:
-            if iterations == None and not atype == None:
+            if iterations is None and not atype is None:
                 raise TypeError("RanInt() missing 1 required positional argument: 'iterations'")
-            elif not iterations == None and atype == None:
+            elif not iterations is None and atype is None:
                 raise TypeError("RanInt() missing 1 required positional argument: 'atype'")
             else:
                 ranints = []
