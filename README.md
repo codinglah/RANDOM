@@ -2,11 +2,11 @@
 
 [![CodeFactor](https://www.codefactor.io/repository/github/codinglah/random/badge/main)](https://www.codefactor.io/repository/github/codinglah/random/overview/main)
 
-## Update 20/6/21:
+## Update 15/1/22:
 
-Currently, the `RanInt()` function has been completed. You are welcome to test it out, although there may be certain issues with it. Here are some details about the function:
+The `RanInt()` function has been improved, with `iterations` and `atype` combined into `avg`, and several bugs fixed.
 
-### `RanInt(minimum, maximum, quantity = 1, iterations = None, atype = None)` 
+### `RanInt(minimum, maximum, quantity = 1, avg = None)` 
 
 #### Use
 
@@ -26,15 +26,13 @@ How many random integers you want to generate. Default is `1`.
 
 #### NOTE:
 
-If you enter a decimal for any of the above arguments, it will **automatically be rounded ***down*** **to the nearest integer**. For example, `3.9` gives `3`.
+If you enter a decimal for any of the above arguments, it will **automatically be rounded** ***down*** **to the nearest integer**. For example, `3.9` gives `3`.
 
-##### `iterations`
+##### `avg`
 
-How many random integers, whose average is taken afterwards, you want to generate. If value is `not None`, value of `atype` cannot be `None`.
+Two values separated by `|`. First (ie before the `|`), how many random integers, whose average is taken afterwards, you want to generate. Second, the type of average you want to take from the previously mentioned integers generated. Available options are `mean`, `median`, `mode` and `rand`. `rand` randomly picks one of the averages.
 
-##### `atype`
-
-Choose what type of average you want to take from the previously mentioned integers generated in `iterations`. Available options are `mean`, `median`, `mode` and `rand`. `rand` randomly picks one of the averages. 
+An example for this would be "10|rand", which generates random integers and takes 10 random averages of them.
 
 **--**
 
