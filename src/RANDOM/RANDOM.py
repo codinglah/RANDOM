@@ -1,66 +1,113 @@
 import random
 import math
-def RanInt(minimum, maximum, quantity = 1, iterations = None, atype = None):
-    real_iterations = iterations
-    try:
-        iterations = int(iterations)
-    except:
-        raise ValueError("non-integer arg for 'iterations'")
+import statistics
+import string
+
+def RanInt(minimum, maximum, quantity = 1, avg = None):
+
+# Conditions for testing validity of arguments    
+    
     try:
         quantity = int(quantity)
     except:
         raise ValueError("non integer arg for 'quantity'")
+
+    if minimum >= maximum:
+        raise ValueError("argument 'minimum' cannot be smaller or equal to 'maximum'")
+    
     if quantity < 1:
         raise ValueError("argument 'quantity' cannot be less than 1")
+    
     if minimum is None and not maximum is None:
         raise TypeError("RanInt() missing 1 required positional argument: 'minimum'")
+    
     if not minimum is None and maximum is None:
         raise TypeError("RanInt() missing 1 required positional argument: 'maximum'")
+    
     if not minimum is None and not maximum is None:
-        if iterations is None and atype is None:
+        
+        if avg is None or avg == "":
+            
+            # Direct generation of random number(s)
+
             ranints = []
+            
             while quantity > 0:
                 ranints.append(random.randint(int(minimum), int(maximum)))
                 quantity -= 1
+            
             return ranints
-        if iterations is None and not atype is None:
-            raise TypeError("RanInt() missing 1 required positional argument: 'iterations'")
-        if not iterations is None and atype is None:
-            raise TypeError("RanInt() missing 1 required positional argument: 'atype'")
-        ranints = []
-        while quantity > 0:
-            numlist = [1]
-            iterations = real_iterations
-            while iterations > 0:
+        
+        else:
+            
+            # Validity check for avg
+
+            valid = "|" in avg
+            
+            if valid == False:
+                raise ValueError("invalid argument for 'avg'; missing '|'")
+
+            # Taking average of several random numbers
+            
+            else:
+                avg = str(avg)
+                ranints = []
+                avgl = avg.split("|")
+                atype = avgl[1]
+            
+            # Value validity check
+            
                 try:
-                    numlist.append(random.randint(int(minimum), int(maximum)))
+                    iterations = int(avgl[0])
                 except:
-                    raise ValueError("non-integer arg for 'minimum' or 'maximum'")
-                iterations -= 1
-            del numlist[0]
-            if atype == "rand":
-                a = random.randint(1, 3)
-            else:
-                a = 4
-            if atype == "mean" or a == 1:
-                    deci = str(sum(numlist) / len(numlist))
-                    if int(deci[-1:]) >= 5:
-                        ranints.append(math.ceil(float(deci)))
+                    raise ValueError("invalid argument for 'avg'")
+            
+                real_iterations = iterations
+            
+                while quantity > 0:
+                    numlist = [1]
+                    iterations = real_iterations
+                    
+                    while iterations > 0:
+                        
+                        try:
+                            numlist.append(random.randint(int(minimum), int(maximum)))
+                        except:
+                            raise ValueError("non-integer arg for 'minimum' or 'maximum'")
+                        
+                        iterations -= 1
+                    
+                    del numlist[0]
+                
+                # Random average
+
+                    if atype == "rand":
+                        a = random.randint(1, 3)
                     else:
-                        ranints.append(math.floor(float(deci)))
-            elif atype == "median" or a == 2:
-                    n = len(numlist)
-                    for i in range(n-1):
-                        for j in range(0, n-i-1):
-                            if numlist[j] > numlist[j + 1] :
-                                numlist[j], numlist[j + 1] = numlist[j + 1], numlist[j]
-                    if len(numlist) % 2 == 0:
-                        ranints.append((numlist[len(numlist) // 2 - 1] + numlist[len(numlist) // 2]) // 2)
+                        a = 4
+                
+                # Mean taken
+                
+                    if atype == "mean" or a == 1:
+                        deci = str(sum(numlist) / len(numlist))
+                        if int(deci[-1:]) >= 5:
+                            ranints.append(math.ceil(float(deci)))
+                        else:
+                            ranints.append(math.floor(float(deci)))
+                
+                # Median taken
+
+                    elif atype == "median" or a == 2:
+                        ranints.append(round(statistics.median(numlist)))
+                
+                # Mode taken
+
+                    elif atype == "mode" or a == 3:
+                        ranints.append(max(set(numlist), key = numlist.count))
+                
                     else:
-                        ranints.append(numlist[math.floor(len(numlist) / 2)])
-            elif atype == "mode" or a == 3:
-                    ranints.append(max(set(numlist), key = numlist.count))
-            else:
-                raise ValueError("invalid argument for 'atype'")
-            quantity -= 1
-        return ranints
+                        raise ValueError("invalid argument for 'avg'")
+                    
+                    quantity -= 1
+                
+                return ranints
