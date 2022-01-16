@@ -2,7 +2,7 @@
 
 [![CodeFactor](https://www.codefactor.io/repository/github/codinglah/random/badge/main)](https://www.codefactor.io/repository/github/codinglah/random/overview/main)
 
-## Update 15/1/22:
+## Update 16/1/22:
 
 The `RanInt()` function has been improved, with `iterations` and `atype` combined into `avg`, and several bugs fixed.
 
