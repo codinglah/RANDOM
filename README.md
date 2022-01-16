@@ -32,7 +32,7 @@ If you enter a decimal for any of the above arguments, it will **automatically b
 
 Two values separated by `|`. First (ie before the `|`), how many random integers, whose average is taken afterwards, you want to generate. Second, the type of average you want to take from the previously mentioned integers generated. Available options are `mean`, `median`, `mode` and `rand`. `rand` randomly picks one of the averages.
 
-An example for this would be "10|rand", which generates random integers and takes 10 random averages of them.
+An example for this would be `10|rand`, which generates random integers and takes 10 random averages of them.
 
 **--**
 
